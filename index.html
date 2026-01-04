@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camille & Simon — Invitation</title>
+  <meta name="description" content="Invitation au mariage de Camille & Simon : informations, programme, RSVP, accès." />
+
+  <style>
+    :root{
+      --bg:#fbfaf8;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#b48a5a;
+      --accent2:#2f5d62;
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --radius: 18px;
+      --max: 1050px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(180,138,90,.12), transparent 60%),
+        radial-gradient(1200px 600px at 90% 0%, rgba(47,93,98,.10), transparent 55%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background: rgba(251,250,248,.78);
+      border-bottom:1px solid rgba(229,231,235,.6);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      font-weight:700;
+    }
+    .brand small{color:var(--muted); font-weight:600}
+    .links{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:flex-end;
+    }
+    .chip{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.7);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .chip:hover{border-color:rgba(180,138,90,.55); color:var(--text)}
+    .hero{
+      padding:48px 0 24px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .links{justify-content:flex-start}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid rgba(229,231,235,.8);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    .hero h1{
+      font-size: clamp(30px, 4vw, 48px);
+      margin:0 0 6px;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      color:var(--muted);
+      margin:0 0 16px;
+      font-size:16px;
+    }
+    .badge-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(180,138,90,.10);
+      border:1px solid rgba(180,138,90,.25);
+      color:#5a3f22;
+      font-weight:600;
+      font-size:14px;
+    }
+    .badge.secondary{
+      background: rgba(47,93,98,.10);
+      border-color: rgba(47,93,98,.25);
+      color:#1f3e41;
+    }
+    .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .btn.primary{
+      border-color: rgba(180,138,90,.35);
+      background: linear-gradient(180deg, rgba(180,138,90,.18), rgba(180,138,90,.08));
+      color:#3e2a14;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width: 520px){ .kv{grid-template-columns:1fr} }
+    .kv .item{
+      border:1px dashed rgba(229,231,235,.9);
+      border-radius:14px;
+      padding:12px;
+    }
+    .kv .label{color:var(--muted); font-size:13px}
+    .kv .value{font-weight:800; margin-top:2px}
+    .section{
+      padding:18px 0;
+    }
+    .section h2{
+      font-size:22px;
+      margin:0 0 10px;
+      letter-spacing:-.01em;
+    }
+    .section p{margin:0 0 12px; color:var(--muted)}
+    .grid-2{
+      display:grid; grid-template-columns: 1fr 1fr; gap:18px;
+    }
+    @media (max-width: 900px){ .grid-2{grid-template-columns:1fr} }
+    .list{
+      display:flex; flex-direction:column; gap:10px;
+      margin-top:10px;
+    }
+    .row{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border:1px solid rgba(229,231,235,.9);
+      border-radius:14px;
+      background: rgba(255,255,255,.65);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      margin-top:6px;
+      background: var(--accent);
+      flex:0 0 auto;
+    }
+    .dot.green{background: var(--accent2)}
+    .row strong{display:block}
+    form{display:flex; flex-direction:column; gap:10px}
+    input, select, textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px 12px;
+      font:inherit;
+      background:#fff;
+    }
+    textarea{min-height:110px; resize:vertical}
+    .help{font-size:13px; color:var(--muted)}
+    .success{
+      display:none;
+      border:1px solid rgba(47,93,98,.25);
+      background: rgba(47,93,98,.08);
+      color:#1f3e41;
+      padding:12px;
+      border-radius:14px;
+      font-weight:700;
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 900px){ .gallery{grid-template-columns: repeat(2, 1fr)} }
+    .ph{
+      aspect-ratio: 4/3;
+      border-radius:16px;
+      border:1px solid rgba(229,231,235,.9);
+      background:
+        linear-gradient(135deg, rgba(180,138,90,.12), rgba(47,93,98,.10)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.8) 0 10px, rgba(255,255,255,.5) 10px 20px);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(31,41,55,.55);
+      font-weight:800;
+    }
+    .blog-post{
+      border:1px solid rgba(229,231,235,.9);
+      border-radius:16px;
+      padding:14px;
+      background: rgba(255,255,255,.7);
+    }
+    .blog-post .meta{color:var(--muted); font-size:13px; margin-bottom:6px}
+    footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .tiny{font-size:12px; color:var(--muted)}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        <span>Camille & Simon</span>
+        <small>— Mariage</small>
+      </div>
+      <nav class="links" aria-label="Navigation">
+        <a class="chip" href="#infos">Infos</a>
+        <a class="chip" href="#programme">Programme</a>
+        <a class="chip" href="#acces">Accès</a>
+        <a class="chip" href="#hebergement">Hébergement</a>
+        <a class="chip" href="#rsvp">RSVP</a>
+        <a class="chip" href="#blog">Blog</a>
+        <a class="chip" href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="card">
+          <h1>On se dit oui.</h1>
+          <p class="subtitle">
+            Vous êtes invités à célébrer notre mariage. Retrouvez ici toutes les informations pratiques,
+            les mises à jour et le formulaire de réponse.
+          </p>
+
+          <div class="badge-row">
+            <div class="badge">Samedi 12 juillet 2026</div>
+            <div class="badge secondary">Domaine du Château — Région</div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#rsvp">Répondre (RSVP)</a>
+            <button class="btn" id="btnAddToCalendar" type="button">Ajouter au calendrier</button>
+            <a class="btn" href="#acces">Itinéraire</a>
+          </div>
+
+          <div class="kv">
+            <div class="item">
+              <div class="label">Cérémonie</div>
+              <div class="value">15:00</div>
+              <div class="help">Jardin du Domaine</div>
+            </div>
+            <div class="item">
+              <div class="label">Cocktail & Dîner</div>
+              <div class="value">17:00</div>
+              <div class="help">Orangerie</div>
+            </div>
+          </div>
+
+          <p class="tiny" style="margin-top:12px">
+            Astuce : mettez cette page en favori, nous publierons ici les informations et rappels.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 style="margin-top:0">Annonce</h2>
+          <p style="color:var(--muted); margin:0 0 12px">
+            Dernière mise à jour : <span id="lastUpdate">—</span>
+          </p>
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>Dress code</strong>
+              <div style="color:var(--muted)">Chic estival — couleurs claires bienvenues.</div>
+            </div>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <span class="dot"></span>
+            <div>
+              <strong>Enfants</strong>
+              <div style="color:var(--muted)">À préciser selon votre organisation (voir FAQ).</div>
+            </div>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <span class="dot green"></span>
+            <div>
+              <strong>RSVP</strong>
+              <div style="color:var(--muted)">Merci de répondre avant le 15 mai 2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="infos" class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Infos essentielles</h2>
+          <p>Tout ce qu’il faut savoir en un coup d’œil.</p>
+          <div class="list">
+            <div class="row">
+              <span class="dot"></span>
+              <div>
+                <strong>Date</strong>
+                <div style="color:var(--muted)">Samedi 12 juillet 2026</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot green"></span>
+              <div>
+                <strong>Lieu</strong>
+                <div style="color:var(--muted)">Domaine du Château, 12345 Ville</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot"></span>
+              <div>
+                <strong>Heure d’arrivée conseillée</strong>
+                <div style="color:var(--muted)">14:30 (parking + installation)</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot green"></span>
+              <div>
+                <strong>Contact</strong>
+                <div style="color:var(--muted)">Camille : 06 00 00 00 00 — Simon : 06 00 00 00 00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Galerie</h2>
+          <p>Ajoutez quelques photos du couple, du lieu, ou des repères logistiques.</p>
+          <div class="gallery" aria-label="Galerie photos (placeholders)">
+            <div class="ph">Photo 1</div>
+            <div class="ph">Photo 2</div>
+            <div class="ph">Photo 3</div>
+            <div class="ph">Photo 4</div>
+          </div>
+          <p class="help" style="margin-top:10px">
+            Vous pourrez remplacer ces blocs par vos images (voir indications dans le code).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programme" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Programme</h2>
+        <p>Horaires indicatifs (susceptibles d’ajustements).</p>
+        <div class="grid-2">
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>14:30 — Accueil</strong>
+              <div style="color:var(--muted)">Parking, rafraîchissements</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>15:00 — Cérémonie</strong>
+              <div style="color:var(--muted)">Jardin du Domaine</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>16:00 — Photos</strong>
+              <div style="color:var(--muted)">Groupes / couple</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>17:00 — Cocktail</strong>
+              <div style="color:var(--muted)">Terrasse</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>19:30 — Dîner</strong>
+              <div style="color:var(--muted)">Orangerie</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>23:00 — Soirée</strong>
+              <div style="color:var(--muted)">DJ / piste</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="acces" class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Accès</h2>
+          <p>Indications et points de repère.</p>
+          <div class="list">
+            <div class="row">
+              <span class="dot green"></span>
+              <div>
+                <strong>Adresse</strong>
+                <div style="color:var(--muted)">Domaine du Château, Rue Exemple, 12345 Ville</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot"></span>
+              <div>
+                <strong>Parking</strong>
+                <div style="color:var(--muted)">Sur place (fléchage à l’entrée)</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot"></span>
+              <div>
+                <strong>Taxi / VTC</strong>
+                <div style="color:var(--muted)">Prévoyez une réservation à l’avance</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <!-- Remplacez l'URL par un lien Google Maps vers le lieu -->
+            <a class="btn primary" href="https://www.google.com/maps" target="_blank" rel="noreferrer">Ouvrir dans Google Maps</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Carte</h2>
+          <p>Option simple : intégrer Google Maps via un iframe.</p>
+          <div style="border:1px solid rgba(229,231,235,.9); border-radius:16px; overflow:hidden; background:#fff">
+            <!-- Remplacez src par votre embed Google Maps -->
+            <iframe
+              title="Carte"
+              src="https://www.google.com/maps?q=Paris&output=embed"
+              width="100%"
+              height="320"
+              style="border:0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <p class="help" style="margin-top:10px">
+            Sur Google Maps : “Partager” → “Intégrer une carte” → copier le lien.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hebergement" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Hébergement</h2>
+        <p>Quelques options (à adapter) et informations pratiques.</p>
+        <div class="grid-2">
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>Hôtel A (10 min)</strong>
+              <div style="color:var(--muted)">Adresse — Téléphone — Code “MARIAGE”</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>Hôtel B (15 min)</strong>
+              <div style="color:var(--muted)">Adresse — Téléphone</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>Gîte / Airbnb</strong>
+              <div style="color:var(--muted)">Liste de recommandations sur demande</div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>Navettes</strong>
+              <div style="color:var(--muted)">Si vous souhaitez une navette : indiquez-le au RSVP.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h2>RSVP</h2>
+          <p>Répondez en 1 minute. Le formulaire ci-dessous fonctionne en local. Pour le rendre “réel”, voir plus bas.</p>
+
+          <div class="success" id="rsvpSuccess">
+            Merci. Votre réponse a été enregistrée sur cet appareil.
+            Pour une collecte centralisée, connectez le formulaire à Google Forms / Tally / Formspree.
+          </div>
+
+          <form id="rsvpForm">
+            <input name="name" placeholder="Nom et prénom" required />
+            <input name="email" type="email" placeholder="Email (optionnel)" />
+            <select name="attending" required>
+              <option value="" disabled selected>Présence</option>
+              <option value="oui">Oui, je viens</option>
+              <option value="non">Non, je ne pourrai pas</option>
+            </select>
+            <select name="guests">
+              <option value="1" selected>Nombre de personnes : 1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <select name="diet">
+              <option value="aucun" selected>Régime : aucun</option>
+              <option value="vegetarien">Végétarien</option>
+              <option value="vegan">Vegan</option>
+              <option value="sans_gluten">Sans gluten</option>
+              <option value="allergies">Allergies (précisez ci-dessous)</option>
+            </select>
+            <textarea name="message" placeholder="Message / allergies / contraintes (optionnel)"></textarea>
+
+            <button class="btn primary" type="submit">Envoyer</button>
+            <div class="help">
+              Date limite : <strong>15 mai 2026</strong>. Vos données restent sur votre appareil (version démo).
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Rendre le RSVP “officiel”</h2>
+          <p>Trois options simples (sans développement) :</p>
+          <div class="list">
+            <div class="row">
+              <span class="dot green"></span>
+              <div>
+                <strong>Google Forms</strong>
+                <div style="color:var(--muted)">Créer un formulaire → coller le lien du bouton RSVP.</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot"></span>
+              <div>
+                <strong>Tally / Typeform</strong>
+                <div style="color:var(--muted)">Plus joli, logique conditionnelle, export Excel.</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="dot green"></span>
+              <div>
+                <strong>Formspree / Netlify Forms</strong>
+                <div style="color:var(--muted)">Envoi par email automatique, sans serveur.</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="help" style="margin-top:12px">
+            Si vous me dites où vous souhaitez héberger (Wix, WordPress, Notion, GitHub Pages, etc.),
+            je vous donne la configuration la plus simple.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>Blog / Annonces</h2>
+        <p>Utilisez cette section pour publier des mises à jour (menu, plan d’accès, liste cadeaux, etc.).</p>
+
+        <div class="blog-post">
+          <div class="meta">02 janvier 2026 — Mise à jour</div>
+          <strong>Logistique & horaires</strong>
+          <div style="color:var(--muted); margin-top:6px">
+            Nous mettrons ici les infos finales (navettes, horaires précis, plan de table).
+          </div>
+        </div>
+
+        <div class="blog-post" style="margin-top:10px">
+          <div class="meta">15 décembre 2025 — Info</div>
+          <strong>Hébergement</strong>
+          <div style="color:var(--muted); margin-top:6px">
+            Plusieurs hôtels ont des chambres disponibles à proximité. Pensez à réserver tôt.
+          </div>
+        </div>
+
+        <p class="help" style="margin-top:12px">
+          Pour un “vrai blog”, la version WordPress/Notion est idéale. Cette version statique est parfaite si vous voulez une page simple et rapide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="card">
+        <h2>FAQ</h2>
+        <p>Questions fréquentes.</p>
+
+        <div class="list">
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>À quelle heure faut-il arriver ?</strong>
+              <div style="color:var(--muted)">14:30 recommandée. Cérémonie à 15:00.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>Quel dress code ?</strong>
+              <div style="color:var(--muted)">Chic estival. Évitez le total blanc.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="dot green"></span>
+            <div>
+              <strong>Et les enfants ?</strong>
+              <div style="color:var(--muted)">À préciser selon votre choix (ajustez cette réponse).</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="dot"></span>
+            <div>
+              <strong>Liste de mariage / cagnotte ?</strong>
+              <div style="color:var(--muted)">Ajoutez ici un lien (Leetchi, Lydia, liste, etc.).</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center">
+      <div>Camille & Simon — Merci d’être à nos côtés.</div>
+      <div class="tiny">© <span id="year"></span> — Page d’invitation</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Date affichée "dernière mise à jour"
+  const lastUpdateEl = document.getElementById("lastUpdate");
+  lastUpdateEl.textContent = new Date().toLocaleDateString("fr-FR", { year:"numeric", month:"long", day:"numeric" });
+
+  // Année footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // RSVP : stockage local (démo)
+  const form = document.getElementById("rsvpForm");
+  const success = document.getElementById("rsvpSuccess");
+
+  function getStoredRSVPs(){
+    try { return JSON.parse(localStorage.getItem("wedding_rsvps") || "[]"); }
+    catch { return []; }
+  }
+  function storeRSVP(entry){
+    const all = getStoredRSVPs();
+    all.push(entry);
+    localStorage.setItem("wedding_rsvps", JSON.stringify(all));
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.createdAt = new Date().toISOString();
+    storeRSVP(data);
+
+    success.style.display = "block";
+    form.reset();
+    window.scrollTo({ top: success.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
+  });
+
+  // Ajouter au calendrier (ICS)
+  // Ajustez date/heure/lieu/description
+  document.getElementById("btnAddToCalendar").addEventListener("click", () => {
+    const title = "Mariage Camille & Simon";
+    const location = "Domaine du Château, 12345 Ville";
+    const description = "Cérémonie 15:00 — Cocktail 17:00 — Dîner 19:30";
+    // Format UTC: YYYYMMDDTHHMMSSZ
+    const dtStart = "20260712T130000Z"; // 15:00 Paris ~ 13:00Z (à vérifier selon heure d'été)
+    const dtEnd   = "20260712T230000Z";
+
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Wedding Invite//FR
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:${crypto.randomUUID()}
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").split(".")[0]}Z
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:${title}
+LOCATION:${location}
+DESCRIPTION:${description}
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "mariage.ics";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+</script>
+</body>
+</html>
